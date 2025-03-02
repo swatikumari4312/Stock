@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Flame, Slack, Activity, TrendingUp, Square, Layers } from "lucide-react";
 
 import { motion } from "framer-motion";
 
@@ -90,13 +91,13 @@ const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="absolute bottom-10 flex space-x-6"
             >
-                <p className="text-gray-500 text-sm">🔥 Trusted by:</p>
-                <Image src="/images/icon1.png" alt="Descript" width={30} height={10} />
-                <Image src="/slack.png" alt="increase" width={80} height={20} />
-                <Image src="/hotjar.png" alt="payment" width={80} height={20} />
-                <Image src="/segment.png" alt="today" width={80} height={20} />
-                <Image src="/square.png" alt="total" width={80} height={20} />
-                <Image src="/lattice.png" alt="nifty" width={80} height={20} />
+               <p className="text-gray-500 text-sm">🔥 Trusted by:</p>
+      <Flame size={30} color="#F97316" /> {/* Represents Descript */}
+      <Slack size={30} color="#4A154B" /> {/* Represents Slack */}
+      <Activity size={30} color="#EF4444" /> {/* Represents Hotjar */}
+      <TrendingUp size={30} color="#10B981" /> {/* Represents Segment */}
+      <Square size={30} color="#3B82F6" /> {/* Represents Square */}
+      <Layers size={30} color="#8B5CF6" /> {/* Represents Lattice */}
             </motion.div>
         </section>
     );

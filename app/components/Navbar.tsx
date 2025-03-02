@@ -16,7 +16,7 @@ const Navbar = () => {
       className="absolute top-6 left-0 right-0 flex items-center justify-between max-w-6xl mx-auto px-6 md:px-12 z-50"
     >
       {/* Logo */}
-      <h1 className="text-xl font-semibold text-gray-800">🔹Alytics</h1>
+      <h1 className="text-xl font-semibold text-gray-800">🔹MarketWatch</h1>
 
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center space-x-6">
