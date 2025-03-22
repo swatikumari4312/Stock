@@ -1,102 +1,61 @@
-"use client";
+import { useState } from "react";
+import { FaPlus, FaMinus } from "react-icons/fa";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
-const faqData = [
+const faqs = [
   {
     question: "How to start investing in stocks?",
-    answer: "Invest time in studying online tutorials to speed up the process of understanding how the platform works. Then once you are confident that you know your way around, buy your first stock.",
+    answer: "Start by researching, opening a brokerage account, and investing in diversified assets.",
   },
   {
     question: "What does it mean to invest in stocks?",
-    answer:
-      "Investing means losing money. If you invest, your portfolio will decline in value from time to time. This should be expected, but do your best to increase your ability to tolerate that volatility.",
+    answer: "Investing in stocks means buying shares of a company to earn returns over time.",
   },
   {
     question: "Do you need a lot of time to trade stocks?",
-    answer: "If you are trading in stocks then you do not need to spend a lot of time on fundamentals. Rather, here you should read charts, trends, patterns, etc, and get more involved in the day-to-day market activity. ",
+    answer: "Not necessarily. Long-term investing requires minimal time, while active trading requires more.",
   },
   {
     question: "What's going on with the stock market?",
-    answer: "Stock market is facing volatility as earnings season continues, with tech giants like Alphabet and Advanced Micro Devices (AMD) disappointing investors. The S&P 500 and Nasdaq dropped, while Dow Jones remained steady. China’s mild response to U.S. tariffs didn’t ease concerns, as analysts warn of a prolonged trade war.",
+    answer: "Market trends change daily based on economic factors and investor sentiment.",
   },
   {
     question: "How do I choose a stock market brokerage account?",
-    answer: "First, determine the type of brokerage account you need. For most people who are just trying to learn stock market investing, this means choosing between a standard brokerage account and an individual retirement account (IRA). Both account types will allow you to buy stocks, mutual funds, and ETFs.",
+    answer: "Consider fees, features, customer support, and ease of use before selecting a broker.",
   },
 ];
 
-const Faq = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+export default function FAQ() {
+  const [openIndex, setOpenIndex] = useState(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setIsVisible(true);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const toggleFAQ = (index: number) => {
+  const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 50 }}
-      animate={isVisible ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="max-w-5xl mx-auto px-6 py-20"
-    >
-      {/* Heading */}
-      <h4 className="text-green-400 font-semibold text-sm">FAQ</h4>
-      <h2 className="text-4xl font-bold text-white mt-2">Frequently Asked Questions</h2>
-
-      {/* FAQ List */}
-      <div className="mt-8 space-y-4">
-        {faqData.map((faq, index) => (
-          <div
-            key={index}
-            className="border-b border-gray-600 cursor-pointer"
-            onClick={() => toggleFAQ(index)}
-          >
-            {/* Question */}
-            <div className="flex justify-between items-center py-4">
-              <h3 className="text-lg font-medium text-white">{faq.question}</h3>
-              <motion.span
-                animate={{ rotate: openIndex === index ? 45 : 0 }}
-                transition={{ duration: 0.3 }}
-                className="text-xl font-bold text-gray-400"
-              >
-                {openIndex === index ? "✖" : "+"}
-              </motion.span>
-            </div>
-
-            {/* Answer with animation */}
-            <AnimatePresence>
-              {openIndex === index && (
-                <motion.p
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="text-gray-300 text-sm pb-4"
-                >
-                  {faq.answer}
-                </motion.p>
-              )}
-            </AnimatePresence>
+    <div className="bg-black text-white min-h-screen flex flex-col items-center py-12">
+      <h2 className="text-green-400 text-lg font-semibold">FAQ</h2>
+      <h1 className="text-3xl font-bold mt-2">Frequently Asked Questions</h1>
+      
+      <div className="w-full max-w-2xl mt-6">
+        {faqs.map((faq, index) => (
+          <div key={index} className="border-b border-gray-600">
+            <button
+              className="w-full flex justify-between items-center text-lg font-medium text-gray-200 py-4 px-6 hover:bg-gray-800 transition"
+              onClick={() => toggleFAQ(index)}
+            >
+              {faq.question}
+              {openIndex === index ? <FaMinus /> : <FaPlus />}
+            </button>
+            {openIndex === index && (
+              <div className="px-6 py-3 text-gray-300 bg-gray-900">
+                {faq.answer}
+              </div>
+            )}
           </div>
         ))}
       </div>
-    </motion.section>
+    </div>
   );
-};
+}
 
-export default Faq;
 
