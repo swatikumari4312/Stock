@@ -69,7 +69,7 @@ const Navbar = () => {
             <Link href="/changelog" className="text-gray-600 hover:text-gray-800">
               Changelog
             </Link>
-            <button className="px-4 py-2 text-sm border border-gray-700 rounded-md w-32">
+            <button className="px-4 py-2 text-gray-700  border border-gray-700 rounded-md w-32">
               Log In
             </button>
             <button className="px-5 py-2 bg-blue-600 text-white rounded-md w-32">
