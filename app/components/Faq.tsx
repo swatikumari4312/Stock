@@ -54,24 +54,24 @@ const Faq = () => {
       className="max-w-5xl mx-auto px-6 py-20"
     >
       {/* Heading */}
-      <h4 className="text-green-700 font-semibold text-sm">FAQ</h4>
-      <h2 className="text-4xl font-bold text-black mt-2">Frequently asked questions</h2>
+      <h4 className="text-green-400 font-semibold text-sm">FAQ</h4>
+      <h2 className="text-4xl font-bold text-white mt-2">Frequently Asked Questions</h2>
 
       {/* FAQ List */}
       <div className="mt-8 space-y-4">
         {faqData.map((faq, index) => (
           <div
             key={index}
-            className="border-b border-gray-300 cursor-pointer"
+            className="border-b border-gray-600 cursor-pointer"
             onClick={() => toggleFAQ(index)}
           >
             {/* Question */}
             <div className="flex justify-between items-center py-4">
-              <h3 className="text-lg font-medium text-black">{faq.question}</h3>
+              <h3 className="text-lg font-medium text-white">{faq.question}</h3>
               <motion.span
                 animate={{ rotate: openIndex === index ? 45 : 0 }}
                 transition={{ duration: 0.3 }}
-                className="text-xl font-bold text-gray-500"
+                className="text-xl font-bold text-gray-400"
               >
                 {openIndex === index ? "✖" : "+"}
               </motion.span>
@@ -85,7 +85,7 @@ const Faq = () => {
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="text-gray-600 text-sm pb-4"
+                  className="text-gray-300 text-sm pb-4"
                 >
                   {faq.answer}
                 </motion.p>
@@ -99,3 +99,4 @@ const Faq = () => {
 };
 
 export default Faq;
+
