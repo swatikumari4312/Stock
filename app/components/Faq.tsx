@@ -1,3 +1,4 @@
+'use client'
 import { useState } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
